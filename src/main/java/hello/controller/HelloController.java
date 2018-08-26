@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
     
-    @RequestMapping("/")
+        @RequestMapping("/")
     public String home() {
         return "Hello Docker World from OpenShift.io";
     }

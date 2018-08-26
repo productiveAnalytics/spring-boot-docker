@@ -26,7 +26,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContextgi;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -41,10 +41,18 @@ public class HelloWorldConfigurationTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testGreeting() throws Exception {
+    public void testStatusCode() throws Exception {
         ResponseEntity<String> entity = restTemplate
                 .getForEntity("http://localhost:" + this.port + "/", String.class);
+        System.out.println(entity.getBody()); // "Hello Docker World from OpenShift.io"
         assertEquals(HttpStatus.OK, entity.getStatusCode());
     }
 
+    @Test
+    public void testGreeting() throws Exception {
+        ResponseEntity<String> entity = restTemplate
+                .getForEntity("http://localhost:" + this.port + "/", String.class);
+        assertTrue("Has any Response message?", entity.hasBody());        
+        assertEquals("Matches Response message?", entity.getBody(), "Hello Docker World from OpenShift.io");
+    }
 }
