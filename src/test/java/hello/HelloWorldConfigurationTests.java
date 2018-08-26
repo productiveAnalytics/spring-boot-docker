@@ -33,6 +33,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext
 public class HelloWorldConfigurationTests {
+    
+    private static final String EXPECTED_MESSAGE = "Hello Docker World >> from OpenShift.io";
 
     @LocalServerPort
     private int port;
@@ -53,6 +55,6 @@ public class HelloWorldConfigurationTests {
         ResponseEntity<String> entity = restTemplate
                 .getForEntity("http://localhost:" + this.port + "/", String.class);
         assertTrue("Has any Response message?", entity.hasBody());        
-        assertEquals("Matches Response message?", entity.getBody(), "Hello Docker World from OpenShift.io");
+        assertEquals("Matches Response message?", entity.getBody(), EXPECTED_MESSAGE);
     }
 }
