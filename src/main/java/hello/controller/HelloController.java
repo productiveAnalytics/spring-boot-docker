@@ -12,6 +12,6 @@ public class HelloController {
     
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World >> from OpenShift.io";
+        return "Hello Docker World (from OpenShift.io)";
     }
 }
