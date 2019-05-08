@@ -29,15 +29,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import hello.controller.HelloController;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext
 public class HelloWorldConfigurationTests {
     
-    private static final String EXPECTED_MESSAGE = "Hello Docker World >> from OpenShift.io";
+    private static final String EXPECTED_MESSAGE = HelloController.TEST_RESPONSE;
 
     @LocalServerPort
-    private int port;
+    private int port = 9999;
 
     @Autowired
     private TestRestTemplate restTemplate;

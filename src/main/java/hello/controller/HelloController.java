@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
+	public static final String TEST_RESPONSE = "Hello Docker World (from OpenShift.io)";
     
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World (from OpenShift.io)";
+        return TEST_RESPONSE;
     }
 }
