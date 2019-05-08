@@ -39,7 +39,7 @@ public class HelloWorldConfigurationTests {
     private static final String EXPECTED_MESSAGE = HelloController.TEST_RESPONSE;
 
     @LocalServerPort
-    private int port = 9999;
+    private int port;
 
     @Autowired
     private TestRestTemplate restTemplate;
